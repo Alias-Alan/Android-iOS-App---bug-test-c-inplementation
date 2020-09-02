@@ -1,0 +1,27 @@
+//////////////////////////////////
+//                              //
+//     Simple Lumber Script     //
+// Razor Script for UO Outlands //
+//        by Syrupz  v.1        //
+//                              //
+//////////////////////////////////
+
+while not dead
+    #equip check
+    if rhandempty
+        dclicktype '7133' //hatchet
+        pause 400 //spam 
+    endif
+    #chopchop section
+    hotkey 'use item in hand'
+    wft
+    target 'self'
+    pause 400 //spam
+    #stop when no more wood to harvest
+    if insysmsg "You do not see" //might need to fix this
+        overhead '> Move to Next Tree <' 101
+        pause 1200
+    endif
+    #wait to loop
+    pause 800
+endwhile
