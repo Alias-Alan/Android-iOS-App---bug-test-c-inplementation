@@ -1,0 +1,56 @@
+
+//////////////////////////////////
+//                              //
+//    Cooking Script for 120    //
+// Razor Script for UO Outlands //
+//        by Syrupz  v.1        //
+//                              //
+////////////////////////////////// 
+while skill cooking < 120 
+  #start campfire
+    if not findtype 'kindling' true
+  #use kindling
+        dclicktype 'kindling'
+        pause 1000 
+    endif
+  #food count (rename to food name)
+    if count 'raw ribs' < 5 and count 'raw fishsteaks' < 5
+        overhead '> Need Food <' 55
+        stop
+    endif
+  #proper names for cooking items
+    if not findtype 'frying pan' true and not findtype 'rolling pin' true
+        overhead '> Need Skillets or Rolling Pins <' 55'
+        stop
+    else
+        dclicktype 'frying pan'
+        dclicktype 'rolling pin'
+    waitformenu 0x38920abd
+    endif
+  #the recipes 
+    menu 0x38920abd 100 
+    waitformenu 0x38920abd
+  #start
+    if skill cooking < 95 
+  #when using ribs select Cooked Ribs 
+        if findtype 'raw ribs' > 2 
+            menu 0x38920abd 202 
+  #when using Fish select Cooked Fish Steak 
+        else if findtype 'raw fishsteaks' > 2
+            menu 0x38920abd 204
+        endif 
+  #when over 95 cooking
+    # endif
+    # if skill cookong > 95
+  #when using ribs select Ribs Basket
+        if findtype 'raw ribs' > 2 
+            menu 0x38920abd 205 
+  #when using Fish select Fish Steak Basket
+        else if findtype 'raw fishsteaks' > 2
+            menu 0x38920abd 207 
+        endif 
+    endif 
+  #delay
+    pause 2000
+endwhile
+overhead '> Training Complete <' 88
