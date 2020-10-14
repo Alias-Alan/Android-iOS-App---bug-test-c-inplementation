@@ -12,16 +12,16 @@
 while not dead
     pause 250 //to help prevent loops
     skill 'detectinghidden'
+    pause 250
+    hotkey 'target self'
+    pause 400
+    if insysmsg 'You search the home and find no one hiding within.'
+        overhead '>> All Clear! <<' 78
+    else 
+        overhead '>> DANGER FOUND! <<' 53
+        say 'I ban thee'
         pause 250
-        hotkey 'target self'
-        pause 400
-        if insysmsg 'You search the home and find no one hiding within.'
-            overhead '>> All Clear! <<' 78
-        else 
-            overhead '>> DANGER FOUND! <<' 53
-            say 'I ban thee'
-            pause 250
-            hotkey 'target next grey humanoid' 
-            //change to what fits you best, maybe multiple hotkey targets even
-        endif
+        hotkey 'target next grey humanoid' 
+        //change to what fits you best, maybe multiple hotkey targets even
+    endif
 endwhile
